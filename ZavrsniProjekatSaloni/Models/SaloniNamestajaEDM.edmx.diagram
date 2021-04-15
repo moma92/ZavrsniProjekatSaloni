@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2f8027081b44e6590b4f0161a96a909" Name="Diagram1">
+        <EntityTypeShape EntityType="SaloniNamestajaModel.Article" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloniNamestajaModel.Bill" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloniNamestajaModel.Category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloniNamestajaModel.Purchase" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloniNamestajaModel.Role" Width="1.5" PointX="1.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloniNamestajaModel.Salon" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaloniNamestajaModel.User" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="SaloniNamestajaModel.FK_Article_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloniNamestajaModel.FK_Article_Salon" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloniNamestajaModel.FK_Purchase_Article" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloniNamestajaModel.FK_Bill_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloniNamestajaModel.FK_Purchase_Bill" ManuallyRouted="false" />
+        <AssociationConnector Association="SaloniNamestajaModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
