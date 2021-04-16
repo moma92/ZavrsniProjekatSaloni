@@ -1,11 +1,12 @@
 ﻿@model ZavrsniProjekatSaloni.Models.User
 
 @{
-    ViewBag.Title = "Detalji";
+    ViewBag.Title = "Brisanje";
 }
 
-<h2>Detalji</h2>
+<h2>Brisanje korisnika</h2>
 
+<h3>Da li ste sigurni da zelite da obrisete korisnika?</h3>
 <div>
     <h4>Korisnik</h4>
     <hr />
@@ -18,7 +19,7 @@
             @Html.DisplayFor(model => model.UserName)
         </dd>
 
-        @*<dt>
+        @* <dt>
             @Html.DisplayNameFor(model => model.Password)
         </dt>
 
@@ -67,9 +68,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obrisi" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak na listu korisnika", "GetUsers")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Izmeni", "EditUser", new { id = Model.UserId }) |
-    @Html.ActionLink("Obrisi", "DeleteUser", new { id = Model.UserId }) |
-    @Html.ActionLink("Povratak na listu korisnika", "GetUsers")
-</p>

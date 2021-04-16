@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ZavrsniProjekatSaloni.Models.Role>
+
+@{
+    ViewBag.Title = "Uloge";
+}
+
+<h2>Lista uloga</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novu ulogu", "CreateRole")
+</p>
+<table id="myTable" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmeni", "EditRole", new { id = item.RoleId }) |
+                    @Html.ActionLink("Obrisi", "DeleteRole", new { id = item.RoleId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+}

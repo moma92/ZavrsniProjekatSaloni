@@ -1,0 +1,32 @@
+﻿@model ZavrsniProjekatSaloni.Models.Role
+
+@{
+    ViewBag.Title = "Brisanje";
+}
+
+<h2>Brisanje uloge</h2>
+
+<h3>Da li ste sigurni da zelite da obrisete ulogu?</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obrisi" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak na listu uloga", "GetRoles")
+        </div>
+    }
+</div>

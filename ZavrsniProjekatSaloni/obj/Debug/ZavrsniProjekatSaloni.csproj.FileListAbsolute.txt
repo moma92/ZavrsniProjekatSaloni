@@ -77,6 +77,8 @@ C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\b
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\System.Web.WebPages.dll
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\System.Web.WebPages.Razor.dll
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\WebGrease.dll
+C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\EntityFramework.xml
+C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\EntityFramework.SqlServer.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\System.Web.Helpers.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\System.Web.Mvc.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\System.Web.Optimization.xml
@@ -86,8 +88,6 @@ C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\b
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\System.Web.WebPages.Razor.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\Newtonsoft.Json.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\Antlr3.Runtime.pdb
-C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\EntityFramework.xml
-C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\EntityFramework.SqlServer.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Momir\source\repos\moma92\ZavrsniProjekatSaloni\ZavrsniProjekatSaloni\bin\Microsoft.AspNet.Identity.EntityFramework.xml

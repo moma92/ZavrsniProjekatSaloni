@@ -22,6 +22,7 @@ namespace ZavrsniProjekatSaloni.Models
         }
         [Display(Name = "Uloga")]
         public int RoleId { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Uloga")]
         public string RoleName { get; set; }
     

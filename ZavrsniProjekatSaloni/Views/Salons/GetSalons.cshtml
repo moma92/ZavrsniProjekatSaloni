@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ZavrsniProjekatSaloni.Models.Salon>
+
+@{
+    ViewBag.Title = "Lista salona";
+}
+
+<h2>Lista salona</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novi salon", "CreateSalon")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebPage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankAccountNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebPage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankAccountNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SalonId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SalonId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SalonId })
+        </td>
+    </tr>
+}
+
+</table>

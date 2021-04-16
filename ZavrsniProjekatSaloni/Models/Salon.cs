@@ -11,7 +11,8 @@ namespace ZavrsniProjekatSaloni.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Salon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +22,30 @@ namespace ZavrsniProjekatSaloni.Models
         }
     
         public int SalonId { get; set; }
+
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Ime")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Vlasnik")]
         public string Owner { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Adresa")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Broj telefona")]
         public int PhoneNumber { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Mail adresa")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Web stranica")]
         public string WebPage { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "PIB")]
         public int TIN { get; set; }
+        [Required(ErrorMessage = "Polje je obavezno!")]
+        [Display(Name = "Bankovni racun")]
         public long BankAccountNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
