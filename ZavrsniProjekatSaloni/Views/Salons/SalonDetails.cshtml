@@ -1,0 +1,82 @@
+﻿@model ZavrsniProjekatSaloni.Models.Salon
+
+@{
+    ViewBag.Title = "Detalji";
+}
+
+<h2>Detalji salona</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankAccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAccountNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "EditSalon", new { id = Model.SalonId }) |
+    @Html.ActionLink("Povratak na listu salona", "GetSalons")
+</p>

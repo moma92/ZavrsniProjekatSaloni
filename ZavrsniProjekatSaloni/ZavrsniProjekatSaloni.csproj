@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -305,6 +306,15 @@
     <Content Include="Views\Roles\EditRole.cshtml" />
     <Content Include="Views\Roles\DeleteRole.cshtml" />
     <Content Include="Views\Salons\GetSalons.cshtml" />
+    <Content Include="Views\Salons\SalonDetails.cshtml" />
+    <Content Include="Views\Salons\CreateSalon.cshtml" />
+    <Content Include="Views\Salons\EditSalon.cshtml" />
+    <Content Include="Views\Salons\DeleteSalon.cshtml" />
+    <Content Include="Views\Categories\GetCategories.cshtml" />
+    <Content Include="Views\Categories\CategoryDetails.cshtml" />
+    <Content Include="Views\Categories\CreateCategory.cshtml" />
+    <Content Include="Views\Categories\EditCategory.cshtml" />
+    <Content Include="Views\Categories\DeleteCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

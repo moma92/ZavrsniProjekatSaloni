@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ZavrsniProjekatSaloni.Models;
@@ -36,6 +38,120 @@ namespace ZavrsniProjekatSaloni.Controllers
         {
             var salons = db.Salons.ToList();
             return View(salons);
+        }
+        /// <summary>
+        /// Metoda koja vraca pogled sa detaljima selektovanog salona.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult SalonDetails(int? id)
+        {
+
+            Salon salon = db.Salons.Where(x => x.SalonId == id).FirstOrDefault();
+            if (salon == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(salon);
+        }
+        /// <summary>
+        /// Metoda koja vraca pogled sa formom za kreiranje novih salona.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult CreateSalon()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Metoda koja vraca pogled za izmenu salona sa ispunjenom formom salonovih podataka.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult EditSalon(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Salon salon = db.Salons.Where(x => x.SalonId == id).FirstOrDefault();
+            if (salon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(salon);
+        }
+        /// <summary>
+        /// Metoda koja vraca pogled za brisanje selektovanog salona.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult DeleteSalon(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Salon salon = db.Salons.Where(x => x.SalonId == id).FirstOrDefault();
+            if (salon == null)
+            {
+                return HttpNotFound();
+            }
+            return View(salon);
+        }
+        #endregion
+
+        #region HttpPost Requests
+        /// <summary>
+        /// Metoda koja dodaje novi salon u bazu podataka i redirektuje na prikaz liste salona.
+        /// </summary>
+        /// <param name="salon"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSalon([Bind(Include = "SalonId,Name,Owner,Address,PhoneNumber,Email,WebPage,Tin,BankAccountNumber")] Salon salon)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Salons.Add(salon);
+                db.SaveChanges();
+                return RedirectToAction("GetSalons");
+            }
+            return View(salon);
+        }
+        /// <summary>
+        /// Metoda koja nakon izmene  parametara salona menja stanje entiteta u "Modified" i cuva promene u bazi podataka.
+        /// </summary>
+        /// <param name="salon"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSalon([Bind(Include = "SalonId,Name,Owner,Address,PhoneNumber,Email,WebPage,Tin,BankAccountNumber")] Salon salon)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(salon).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("GetSalons");
+            }
+            return View(salon);
+        }
+        /// <summary>
+        /// Metoda koja brise selektovani salon iz baze podataka i redirektuje nas na pogled sa listom salona.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost, ActionName("DeleteSalon")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSalonConfirmed(int id)
+        {
+            Salon salon = db.Salons.Where(x => x.SalonId == id).FirstOrDefault();
+            db.Salons.Remove(salon);
+            db.SaveChanges();
+            return RedirectToAction("GetSalons");
         }
         #endregion
     }

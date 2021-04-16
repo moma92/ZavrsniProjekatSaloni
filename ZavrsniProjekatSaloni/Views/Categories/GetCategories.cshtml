@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ZavrsniProjekatSaloni.Models.Category>
+
+@{
+    ViewBag.Title = "Kategorije";
+}
+
+<h2>Lista kategorija namestaja</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novu kategoriju", "CreateCategory")
+</p>
+<table id="myTable" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryDescription)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryDescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmeni", "EditCategory", new { id = item.CategoryId }) |
+                    @Html.ActionLink("Detalji", "CategoryDetails", new { id = item.CategoryId }) |
+                    @Html.ActionLink("Obrisi", "DeleteCategory", new { id = item.CategoryId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+<script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+</script>
+
+}
