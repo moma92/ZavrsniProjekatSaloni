@@ -21,7 +21,7 @@ namespace ZavrsniProjekatSaloni.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SaloniNamestajaEntities", throwIfV1Schema: false)
         {
         }
 

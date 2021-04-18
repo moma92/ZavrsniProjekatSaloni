@@ -81,11 +81,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+
                
-                   <input type="file" formmethod="post" formaction="CreateArticle" formenctype="multipart/form-data" id="image1" name="image1"/>
-                
-                    
-            
+
+                @Html.TextBoxFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2", @type = "file" })
+
 
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>

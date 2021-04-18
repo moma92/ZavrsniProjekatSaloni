@@ -121,11 +121,13 @@ namespace ZavrsniProjekatSaloni.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateArticle([Bind(Include = "ArticleId,Code,ArticleName,ProductionCountry,ProductionYear,Price,StockQuantity,SalonId,CategoryId,Image")] Article article, HttpPostedFileBase image1)
+        public ActionResult CreateArticle([Bind(Include = "ArticleId,Code,ArticleName,ProductionCountry,ProductionYear,Price,StockQuantity,SalonId,CategoryId,Image")] Article article)
         {
+            
             if (ModelState.IsValid) {
-                image1.InputStream.Read(article.Image, 0, image1.ContentLength);
-                article.Image = new byte[image1.ContentLength];
+                
+                article.Image = new byte[article.Image.Length];
+
                 
                     db.Articles.Add(article);
                     db.SaveChanges();

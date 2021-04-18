@@ -27,17 +27,41 @@
                 @Html.ActionLink("Saloni namestaja ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Korisnici", "GetUsers", "Users")</li>
-                    <li>@Html.ActionLink("Uloge", "GetRoles", "Roles")</li>
-                    <li>@Html.ActionLink("Saloni", "GetSalons", "Salons")</li>
-                    <li>@Html.ActionLink("Kategorije", "GetCategories", "Categories")</li>
-                    <li>@Html.ActionLink("Artikli", "GetArticles", "Articles")</li>
-                    <li></li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+                @*<ul class="nav navbar-nav">*@
+                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                @*<li>@Html.ActionLink("Korisnici", "GetUsers", "Users")</li>
+        <li>@Html.ActionLink("Uloge", "GetRoles", "Roles")</li>
+        <li>@Html.ActionLink("Saloni", "GetSalons", "Salons")</li>
+        <li>@Html.ActionLink("Kategorije", "GetCategories", "Categories")</li>
+        <li>@Html.ActionLink("Artikli", "GetArticles", "Articles")</li>
+        <li></li>*@
+                @*</ul>*@
+
+                @if (Session["UserNameSS"] != null)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Korisnici", "GetUsers", "Users")</li>
+                        <li>@Html.ActionLink("Uloge", "GetRoles", "Roles")</li>
+                        <li>@Html.ActionLink("Saloni", "GetSalons", "Salons")</li>
+                        <li>@Html.ActionLink("Kategorije", "GetCategories", "Categories")</li>
+                        <li>@Html.ActionLink("Artikli", "GetArticles", "Articles")</li>
+                    </ul>
+                    <ul class="nav navbar-nav" style="float:right" !important>
+                        <li><p style="margin-top:15px; color:antiquewhite">Hello @Session["UserNameSS"]</p></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav" style="float:right" !important>
+                        <li>@Html.ActionLink("Registruj se", "RegisterUser", "Home")</li>
+                        <li>@Html.ActionLink("Prijavi se", "Method", "Home")</li>
+                       
+                    </ul>
+                }
+                    @*@Html.Partial("_LoginPartial")*@
+                </div>
         </div>
     </div>
     <div class="container body-content">
