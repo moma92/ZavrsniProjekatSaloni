@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ZavrsniProjekatSaloni.Models.Article>
+
+@{
+    ViewBag.Title = "Artikli";
+}
+
+<h2>Lista artikala</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novi artikal", "CreateArticle")
+</p>
+<table id="myTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductionCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductionYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salon.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionCountry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StockQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salon.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmeni", "EditArticle", new { id = item.ArticleId }) |
+                    @Html.ActionLink("Detalji", "ArticleDetails", new { id = item.ArticleId }) |
+                    @Html.ActionLink("Obrisi", "DeleteArticle", new { id = item.ArticleId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+}

@@ -4,7 +4,7 @@
     ViewBag.Title = "Detalji";
 }
 
-<h2>Detalji kategorije</h2>
+<h2>Detalji kategorije  @Html.DisplayFor(model => model.CategoryName)</h2>
 
 <div>
     <h4></h4>
@@ -30,5 +30,5 @@
 </div>
 <p>
     @Html.ActionLink("Izmeni", "EditCategory", new { id = Model.CategoryId }) |
-    @Html.ActionLink("Povratak na listu kategorija", "Index")
+    @Html.ActionLink("Povratak na listu kategorija", "GetCategories")
 </p>

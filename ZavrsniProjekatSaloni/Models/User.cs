@@ -12,6 +12,7 @@ namespace ZavrsniProjekatSaloni.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class User
     {
@@ -22,25 +23,41 @@ namespace ZavrsniProjekatSaloni.Models
         }
            
         public int UserId { get; set; }
+
         [Required(ErrorMessage ="Polje je obavezno!")]
         [Display(Name = "Korisnicko ime")]
+        [StringLength(20,ErrorMessage ="Korisnicko ime ne sme biti duze od 20 karaktera")]
+        [Remote("IsUserNameExist", "Users", AdditionalFields = "UserId", ErrorMessage = "Korisnicko ime je zauzeto")]
         public string UserName { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Lozinka")]
+        [StringLength(30, ErrorMessage = "Lozinka ne sme imati vise od 30 karaktera")]
+        [Remote("IsPasswordExist", "Users", AdditionalFields = "UserId", ErrorMessage = "Lozinka je zauzeta")]
         public string Password { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Ime")]
+        [StringLength(30, ErrorMessage = "Ime ne sme imati vise od 30 karaktera")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Prezime")]
+        [StringLength(30, ErrorMessage = "Prezime ne sme imati vise od 30 karaktera")]
         public string LastName { get; set; }
        
         public int RoleId { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Adresa")]
+        [StringLength(50, ErrorMessage = "Adresa ne sme imati vise od 50 karaktera")]
         public string Address { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Mail adresa")]
+        [EmailAddress(ErrorMessage = "Unesite validan email")]
+        [StringLength(30, ErrorMessage = "Email adresa ne sme imati vise od 30 karaktera")]
+        [Remote("IsEmailExist", "Users", AdditionalFields = "UserId", ErrorMessage = "Mail adresa je zauzeta")]
         public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

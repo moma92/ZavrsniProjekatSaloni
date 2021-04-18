@@ -6,7 +6,9 @@
     <title>@ViewBag.Title</title>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     
 
     @Styles.Render("~/Content/css")
@@ -31,6 +33,7 @@
                     <li>@Html.ActionLink("Uloge", "GetRoles", "Roles")</li>
                     <li>@Html.ActionLink("Saloni", "GetSalons", "Salons")</li>
                     <li>@Html.ActionLink("Kategorije", "GetCategories", "Categories")</li>
+                    <li>@Html.ActionLink("Artikli", "GetArticles", "Articles")</li>
                     <li></li>
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -15,7 +15,7 @@ namespace ZavrsniProjekatSaloni.Controllers
         /// <summary>
         /// Deklarisanje objekta kontekstne klase baze podataka.
         /// </summary>
-        private SaloniNamestajaEntities db;
+        readonly SaloniNamestajaEntities db;
         #endregion
 
         #region Constructors
@@ -160,6 +160,49 @@ namespace ZavrsniProjekatSaloni.Controllers
             return RedirectToAction("GetUsers");
         }
         #endregion
-       
+
+        #region Validation Methods
+        public JsonResult IsUserNameExist(string userName, int? Id)
+        {
+            var validateUserName = db.Users.FirstOrDefault
+                                (x => x.UserName == userName && x.UserId != Id);
+            if (validateUserName != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult IsPasswordExist(string password, int? Id)
+        {
+            var validatePassword = db.Users.FirstOrDefault
+                                (x => x.Password == password && x.UserId != Id);
+            if (validatePassword != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult IsEmailExist(string email, int? Id)
+        {
+            var validateEmail = db.Users.FirstOrDefault
+                                (x => x.Email == email && x.UserId != Id);
+            if (validateEmail != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
     }
 }

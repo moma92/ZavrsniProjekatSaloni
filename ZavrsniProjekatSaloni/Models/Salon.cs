@@ -12,6 +12,7 @@ namespace ZavrsniProjekatSaloni.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class Salon
     {
@@ -20,32 +21,56 @@ namespace ZavrsniProjekatSaloni.Models
         {
             this.Articles = new HashSet<Article>();
         }
-    
+        
         public int SalonId { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno!")]
-        [Display(Name = "Ime")]
+        [Display(Name = "Ime salona")]
+        [StringLength(30, ErrorMessage = "Ime salona ne sme imati vise od 30 karaktera")]
+        //[Remote("IsSalonNameExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Ime salona je zauzeto")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
-        [Display(Name = "Vlasnik")]
+        [Display(Name = "Ime vlasnika")]
+        [StringLength(40, ErrorMessage = "Ime vlasnika ne sme imati vise od 40 karaktera")]
         public string Owner { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Adresa")]
+        [StringLength(30, ErrorMessage = "Adresa ne sme imati vise od 30 karaktera")]
+        //[Remote("IsSalonAddressExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Adresa je zauzeta")]
         public string Address { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Broj telefona")]
+        [Range(000000000, 999999999, ErrorMessage = "Telefon ne sme imati vise od 9 cifara")]
+        //[Remote("IsSalonPhoneExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Broj telefona je zauzet")]
         public int PhoneNumber { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Mail adresa")]
+        [EmailAddress(ErrorMessage = "Unesite validan email")]
+        [StringLength(30, ErrorMessage = "Email ne sme imati vise od 30 karaktera")]
+        //[Remote("IsSalonEmailExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Mail adresa je zauzeta")]
         public string Email { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Web stranica")]
+        [StringLength(30, ErrorMessage = "Web adresa ne sme imati vise od 30 karaktera")]
+        [Url(ErrorMessage = "Web adresa mora imati formu http://www.adresa.ekstenzija")]
+        //[Remote("IsWebPageExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Web adresa je zauzeta")]
         public string WebPage { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "PIB")]
+        [Range(100000000,999999999,ErrorMessage = "PIB mora sadrzati 9 cifara")]
+        //[Remote("IsTinExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "PIB je zauzet")]
         public int TIN { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Bankovni racun")]
+        [Range(100000000000000000, 999999999999999999, ErrorMessage = "Bankovni racun mora sadrzati 18 cifara")]
+        //[Remote("IsBankAccountExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Broj bankovnog racuna je zauzet")]
         public long BankAccountNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

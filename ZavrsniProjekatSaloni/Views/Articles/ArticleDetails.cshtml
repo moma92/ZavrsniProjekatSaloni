@@ -1,0 +1,90 @@
+﻿@model ZavrsniProjekatSaloni.Models.Article
+
+@{
+    ViewBag.Title = "Detalji";
+}
+
+<h2>Detalji artikla  @Html.DisplayFor(model => model.ArticleName)</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salon.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salon.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "EditArticle", new { id = Model.ArticleId }) |
+    @Html.ActionLink("Povratak na listu artikala", "GetArticles")
+</p>
