@@ -12,6 +12,7 @@ namespace ZavrsniProjekatSaloni.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class Role
     {
@@ -20,10 +21,14 @@ namespace ZavrsniProjekatSaloni.Models
         {
             this.Users = new HashSet<User>();
         }
+
         [Display(Name = "Uloga")]
         public int RoleId { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Uloga")]
+        [StringLength(20, ErrorMessage = "Ime uloge ne sme imati vise od 20 karaktera")]
+        [Remote("IsRoleExist", "Roles", AdditionalFields = "RoleId", ErrorMessage = "Uloga vec postoji")]
         public string RoleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

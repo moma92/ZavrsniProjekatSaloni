@@ -155,5 +155,35 @@ namespace ZavrsniProjekatSaloni.Controllers
             return RedirectToAction("GetCategories");
         }
         #endregion
+
+        #region Validation Methods
+        public JsonResult IsCategoryNameExist(string categoryName, int? Id)
+        {
+            var validateCategoryName = db.Categories.FirstOrDefault
+                                (x => x.CategoryName == categoryName && x.CategoryId != Id);
+            if (validateCategoryName != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult IsCategoryDescriptionExist(string categoryDescription, int? Id)
+        {
+            var validateCategoryDescription = db.Categories.FirstOrDefault
+                                (x => x.CategoryDescription == categoryDescription && x.CategoryId != Id);
+            if (validateCategoryDescription != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
     }
 }

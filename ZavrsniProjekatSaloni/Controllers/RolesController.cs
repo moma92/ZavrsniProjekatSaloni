@@ -138,5 +138,21 @@ namespace ZavrsniProjekatSaloni.Controllers
             return RedirectToAction("GetRoles");
         }
         #endregion
+
+        #region Validation Methods
+        public JsonResult IsRoleExist(string roleName, int? Id)
+        {
+            var validateRoleName = db.Roles.FirstOrDefault
+                                (x => x.RoleName == roleName && x.RoleId != Id);
+            if (validateRoleName != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+        #endregion
     }
 }

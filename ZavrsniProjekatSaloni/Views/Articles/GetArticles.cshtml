@@ -5,10 +5,11 @@
 }
 
 <h2>Lista artikala</h2>
-
-<p>
-    @Html.ActionLink("Kreiraj novi artikal", "CreateArticle")
-</p>
+@if (Session["RoleSS"] == "admin")
+{
+    <p>
+        @Html.ActionLink("Kreiraj novi artikal", "CreateArticle")
+    </p>}
 <table id="myTable" class="table">
     <thead>
         <tr>
@@ -74,9 +75,10 @@
                     @Html.DisplayFor(modelItem => item.Salon.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Izmeni", "EditArticle", new { id = item.ArticleId }) |
+                    @if (Session["RoleSS"] == "admin")
+                    {@Html.ActionLink("Izmeni", "EditArticle", new { id = item.ArticleId })} |
                     @Html.ActionLink("Detalji", "ArticleDetails", new { id = item.ArticleId }) |
-                    @Html.ActionLink("Obrisi", "DeleteArticle", new { id = item.ArticleId })
+                    @if (Session["RoleSS"] == "admin") {@Html.ActionLink("Obrisi", "DeleteArticle", new { id = item.ArticleId })}
                 </td>
             </tr>
         }

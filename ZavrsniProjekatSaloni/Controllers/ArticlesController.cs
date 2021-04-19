@@ -126,7 +126,7 @@ namespace ZavrsniProjekatSaloni.Controllers
             
             if (ModelState.IsValid) {
                 
-                article.Image = new byte[article.Image.Length];
+                //article.Image = new byte[article.Image.Length];
 
                 
                     db.Articles.Add(article);
@@ -173,20 +173,6 @@ namespace ZavrsniProjekatSaloni.Controllers
             return RedirectToAction("GetArticles");
         }
         #endregion
-        //[HttpGet]
-        //public JsonResult GetSavedImage()
-        //{
-        //    var article = GetSavedImage();
-        //    article.
-        //}
-        //public byte[] GetImage(string sBase64string)
-        //{
-        //    byte[] bytes = null;
-        //    if (!string.IsNullOrEmpty(sBase64string))
-        //    {
-        //        bytes = Convert.FromBase64String(sBase64string);
-        //    }
-        //    return bytes;
-        //}
+       
     }
 }

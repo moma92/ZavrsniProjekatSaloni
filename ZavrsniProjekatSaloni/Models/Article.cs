@@ -56,11 +56,9 @@ namespace ZavrsniProjekatSaloni.Models
         [Display(Name = "Kategorija")]
         public int CategoryId { get; set; }
 
-        [Required(ErrorMessage = "Polje je obavezno!")]
-        [Display(Name = "Slika")]
-        public byte[] Image { get; set; }
 
-        public HttpPostedFileBase image1 { get; set; }
+        [Display(Name = "Slika")]
+        public byte[] Image { get; set; } 
     
         public virtual Category Category { get; set; }
         public virtual Salon Salon { get; set; }

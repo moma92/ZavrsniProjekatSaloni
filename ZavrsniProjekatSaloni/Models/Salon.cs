@@ -70,7 +70,7 @@ namespace ZavrsniProjekatSaloni.Models
         [Required(ErrorMessage = "Polje je obavezno!")]
         [Display(Name = "Bankovni racun")]
         [Range(100000000000000000, 999999999999999999, ErrorMessage = "Bankovni racun mora sadrzati 18 cifara")]
-        //[Remote("IsBankAccountExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Broj bankovnog racuna je zauzet")]
+       // [Remote("IsBankAccountExist", "Salons", AdditionalFields = "SalonId", ErrorMessage = "Broj bankovnog racuna je zauzet")]
         public long BankAccountNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

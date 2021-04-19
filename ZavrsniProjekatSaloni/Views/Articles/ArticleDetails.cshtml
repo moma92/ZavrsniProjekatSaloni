@@ -85,6 +85,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Izmeni", "EditArticle", new { id = Model.ArticleId }) |
+    @if (Session["RoleSS"] == "admin") {@Html.ActionLink("Izmeni", "EditArticle", new { id = Model.ArticleId }) }|
     @Html.ActionLink("Povratak na listu artikala", "GetArticles")
 </p>

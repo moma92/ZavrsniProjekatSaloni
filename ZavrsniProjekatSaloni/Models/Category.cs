@@ -12,6 +12,7 @@ namespace ZavrsniProjekatSaloni.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class Category
     {
@@ -22,11 +23,17 @@ namespace ZavrsniProjekatSaloni.Models
         }
     
         public int CategoryId { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
+        [StringLength(50, ErrorMessage = "Ime kategorije ne sme imati vise od 50 karaktera")]
         [Display(Name = "Ime kategorije")]
+        [Remote("IsCategoryNameExist", "Categories", AdditionalFields = "CategoryId", ErrorMessage = "Ime kategorije je zauzeto")]
         public string CategoryName { get; set; }
+
         [Required(ErrorMessage = "Polje je obavezno!")]
+        [StringLength(200, ErrorMessage = "Opis kategorije ne sme imati vise od 200 karaktera")]
         [Display(Name = "Opis")]
+        [Remote("IsCategoryDescriptionExist", "Categories", AdditionalFields = "CategoryId", ErrorMessage = "Opis kategorije je zauzet")]
         public string CategoryDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

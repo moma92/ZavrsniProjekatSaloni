@@ -11,9 +11,11 @@ namespace ZavrsniProjekatSaloni.Controllers
 {
     public class HomeController : Controller
     {
+        #region Database Context
         public SaloniNamestajaEntities db = new SaloniNamestajaEntities();
+        #endregion
 
-        
+        #region Http Get Requests
         public ActionResult Index()
         {
             return View();
@@ -33,6 +35,21 @@ namespace ZavrsniProjekatSaloni.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        #endregion
+
+        #region HttpPost Requests
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RegisterUser([Bind(Include = "UserId,UserName,Password,Name,LastName,RoleId,Address,Email")] User user)
@@ -41,67 +58,65 @@ namespace ZavrsniProjekatSaloni.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                Session["UserIdSS"] = user.UserId.ToString();
-                Session["UserNameSS"] = user.UserName.ToString();
-                return RedirectToAction("Index");
+                if (user.RoleId == 2)
+                {
+                    Session["RoleSS"] = "admin";
+                    Session["UserNameSS"] = user.UserName;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    Session["RoleSS"] = "kupac";
+                    Session["UserNameSS"] = user.UserName;
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.RoleId = new SelectList(db.Roles, "RoleId", "RoleName", user.RoleId);
             return View(user);
 
         }
+       
 
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            return RedirectToAction("Index", "Home");
-        }
-        //[HttpGet]
-        //public ActionResult Login()
-        //{
-        //    return View();
-        //}
+        
 
-        //[HttpGet]
-        //public ActionResult Login()
-        //{
-           
-        //    var checkLogin = db.Users.Where(x => x.UserName == username && x.Password == password).FirstOrDefault();
-        //    if (checkLogin != null)
-        //    {
-
-        //        Session["UserNameSS"] = username;
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Notification = "Pogresno korisnicko ime ili lozinka";
-        //        return View();
-        //    }
-
-
-        //}
-
-        public ActionResult SingUp()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult SingUp(User user)
+        [HttpPost, ActionName("Login")]
+        [ValidateAntiForgeryToken]
+        public ActionResult LoginConfirm(UserDTO userDto)
         {
             
-            if (db.Users.Any(x => x.UserName == user.UserName))
-            {
-                Session["UserNameSS"] = user.UserName;
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
 
-                return View();
+            var checkLogin = db.Users.Where(x => x.UserName == userDto.UserName && x.Password == userDto.Password && x.RoleId == 2).FirstOrDefault();
+            
+            if (checkLogin != null)
+            {
+                var role = "admin";
+                Session["UserNameSS"] = userDto.UserName;
+                Session["RoleSS"] = role;
+                return RedirectToAction("Index");
             }
+            else if(checkLogin == null)
+            {
+                var checkLogin2 = db.Users.Where(x => x.UserName == userDto.UserName && x.Password == userDto.Password && x.RoleId == 3).FirstOrDefault();
+
+                if (checkLogin2 != null)
+                {
+                    var role = "kupac";
+                    Session["UserNameSS"] = userDto.UserName;
+                    Session["RoleSS"] = role;
+                    return RedirectToAction("Index");
+                }
+
+            }
+            ViewBag.Notification = "Uneli ste pogresno korisnicko ime ili lozinku";
+            return View();
+
+
+           
+
 
         }
+
+        #endregion
     }
 }

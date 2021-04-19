@@ -347,7 +347,7 @@
     <Content Include="Views\Articles\CreateArticle.cshtml" />
     <Content Include="Views\Articles\EditArticle.cshtml" />
     <Content Include="Views\Home\RegisterUser.cshtml" />
-    <Content Include="Views\Home\SingUp.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
